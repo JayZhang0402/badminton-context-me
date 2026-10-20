@@ -22,10 +22,14 @@ jobs:
         uses: actions/checkout@v4
       - name: Configure Pages
         uses: actions/configure-pages@v5
+      - name: Prepare badminton-only site
+        run: |
+          mkdir -p pages-source
+          cp badminton-mix.md pages-source/badminton-mix.md
       - name: Build site
         uses: actions/jekyll-build-pages@v1
         with:
-          source: ./
+          source: ./pages-source
           destination: ./_site
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
